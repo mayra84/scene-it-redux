@@ -15,6 +15,10 @@ function Search() {
         fetch(`http://www.omdbapi.com/?apikey=59354c85&s=${searchText}`)
         .then(res => res.json())
         .then(data => {
+            if (data.Error) {
+                alert(data.Error)
+                return
+            }
             dispatch(setResults(data.Search))
         })
     }
